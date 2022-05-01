@@ -9,7 +9,9 @@ type ContextType = {
 }
 
 const AppContext: React.Context<ContextType> = createContext<ContextType>({
-  state: initAppState,
+  state:  {
+    transactions: [],
+  } as IAppState,
   addTransaction: () => {},
   setState: () => {}
 });
