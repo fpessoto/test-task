@@ -1,19 +1,27 @@
+import { useNavigate } from "react-router-dom";
+
 import {
   Box,
   Button,
-  ButtonGroup,
   Divider,
-  Flex,
   FormControl,
-  FormHelperText,
   FormLabel,
   Heading,
   Input,
   SimpleGrid,
   VStack,
 } from "@chakra-ui/react";
+import LinkButton from "../components/shared/LinkButton";
 
 export default function Transfer() {
+  let navigate = useNavigate();
+
+  const submitHandler = (event: any) => {
+    console.log("test");
+    event.preventDefault();
+    navigate(`/success`);
+  };
+
   return (
     <>
       <VStack alignItems="left" height="100%">
@@ -48,10 +56,14 @@ export default function Transfer() {
         <Divider />
 
         <SimpleGrid columns={2} spacing={4} height="35px">
-          <Button colorScheme="white" variant="outline" width="100%">
-            Cancel
-          </Button>
-          <Button colorScheme="blue" variant="solid" width="100%">
+          <LinkButton text="Cancel" to="/" />
+          <Button
+            colorScheme="blue"
+            variant="solid"
+            width="100%"
+            type="submit"
+            onClick={submitHandler}
+          >
             Confirm
           </Button>
         </SimpleGrid>

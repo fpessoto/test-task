@@ -6,8 +6,8 @@ import {
   VStack,
   Text,
   Link,
-  Button,
 } from "@chakra-ui/react";
+import LinkButton from "../components/shared/LinkButton";
 
 export default function Success() {
   return (
@@ -39,9 +39,7 @@ export default function Success() {
       </Center>
 
       <Box w="100%">
-        <Button w="100%" colorScheme="white" variant="outline">
-          Done
-        </Button>
+        <LinkButton text="Done" to="/" />
       </Box>
     </VStack>
   );

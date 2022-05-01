@@ -11,8 +11,8 @@ export default function TransactionHistory() {
       spacing={4}
       align="stretch"
     >
-      {transactions.map((transaction) => {
-        return <TransactionItem transaction={transaction} />;
+      {transactions.map((transaction, index) => {
+        return <TransactionItem transaction={transaction} key={index} />;
       })}
     </VStack>
   );
