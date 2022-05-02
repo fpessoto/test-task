@@ -14,7 +14,7 @@ const App = () => {
           p="6"
           rounded="sm"
           bg="white"
-          minHeight="550px"
+          minHeight="580px"
         >
           <Routes>
             <Route path="/" element={<Home />} />

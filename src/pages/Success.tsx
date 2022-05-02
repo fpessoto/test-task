@@ -14,7 +14,7 @@ export default function Success() {
   let navigate = useNavigate();
 
   return (
-    <VStack alignItems="left" height="100%">
+    <VStack alignItems="center" height="100%">
       <Center h="100%">
         <VStack>
           <Box>
