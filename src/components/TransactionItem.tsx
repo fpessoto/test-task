@@ -14,8 +14,8 @@ export default function TransactionItem({
   usdValue,
 }: PropTypes) {
   return (
-    <HStack spacing="24px" width="100%" h="60px">
-      <Box w="80px" h="100%" alignItems="center">
+    <HStack spacing="24px" width="100%" h="50px">
+      <Box w="80px">
         <Avatar
           size="sm"
           name="eth icon"
@@ -26,16 +26,19 @@ export default function TransactionItem({
         />
       </Box>
 
-      <Box w="100%" h="100%">
-        <VStack>
-          <Text color="black">Sent Ether</Text>
+      <Box w="100%">
+        <VStack alignItems="left" spacing={0}>
+          <Text color="black" fontSize="sm" as="b">
+            Sent Ether
+          </Text>
           <Text fontSize="xs" color="gray.400">
             <Moment format="DD-MM-YYYY HH:mm">{date.toString()}</Moment>
           </Text>
         </VStack>
       </Box>
-      <Box w="120px" h="100%">
-        <VStack>
+
+      <Box w="120px">
+        <VStack alignItems="right" spacing={0}>
           <Text as="b" align="right" color="black">
             <CurrencyFormatter
               value={ethValue}

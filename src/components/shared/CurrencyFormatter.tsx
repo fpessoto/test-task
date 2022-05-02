@@ -1,11 +1,11 @@
-import CurrencyFormat from 'react-currency-format';
+import CurrencyFormat from "react-currency-format";
 
 interface PropTypes {
   value: number;
-  decimalScale: number;
-  thousandSeparator: boolean;
-  suffix: string;
-  prefix: string;
+  decimalScale: number | undefined;
+  thousandSeparator: boolean | undefined;
+  suffix: string | undefined;
+  prefix: string | undefined;
 }
 
 export default function CurrencyFormatter({

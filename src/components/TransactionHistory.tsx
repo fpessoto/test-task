@@ -16,7 +16,7 @@ export default function TransactionHistory({
   return (
     <VStack
       divider={<StackDivider borderColor="gray.200" />}
-      spacing={4}
+      spacing={2}
       align="stretch"
     >
       {transactions

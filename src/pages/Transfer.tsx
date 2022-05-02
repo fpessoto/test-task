@@ -29,13 +29,12 @@ export default function Transfer() {
   const { state, addTransaction } = useContext(AppContext);
 
   const [amount, setAmount] = React.useState(state.account.balance);
-  const handleAmount = (event: any) => {
-    console.log(event);
-    setAmount(event);
+  const handleChangeAmount = (value: number | string) => {
+    setAmount(Number(value));
   };
 
   const [recipent, setRecipent] = React.useState("");
-  const handleRecipent = (event: any) => setRecipent(event.target.value);
+  const handleChangeRecipent = (event: any) => setRecipent(event.target.value);
 
   const [errorMessage, setErrorMessage] = React.useState("");
 
@@ -46,8 +45,6 @@ export default function Transfer() {
   };
 
   const submitHandler = async () => {
-    console.log({ amount });
-
     if (amount > state.account.balance) {
       setErrorMessage("Insuficient funds.");
       return;
@@ -66,13 +63,13 @@ export default function Transfer() {
       date: new Date(),
     };
 
-    console.log({ transaction });
     addTransaction(transaction);
     setErrorMessage("");
     navigate("/success");
   };
 
   const handleCloseAlert = () => setErrorMessage("");
+
   return (
     <>
       <VStack alignItems="left" height="100%">
@@ -107,19 +104,12 @@ export default function Transfer() {
                 id="recipient"
                 type="text"
                 placeholder="Enter public Address."
-                onChange={handleRecipent}
+                onChange={handleChangeRecipent}
               />
             </FormControl>
 
             <FormControl>
               <FormLabel htmlFor="amount">Amount</FormLabel>
-              {/* <Input
-                id="amount"
-                type="text"
-                placeholder="Enter the amount will be transfered."
-                onChange={handleAmount}
-              /> */}
-
               <NumberInput
                 id="amount"
                 defaultValue={state.account.balance}
@@ -128,7 +118,7 @@ export default function Transfer() {
                 keepWithinRange={true}
                 clampValueOnBlur={false}
                 placeholder="Enter the amount will be transfered."
-                onChange={handleAmount}
+                onChange={handleChangeAmount}
               >
                 <NumberInputField />
                 <NumberInputStepper>

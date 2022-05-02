@@ -1,7 +1,6 @@
 import { Box, Text, VStack, LinkBox, LinkOverlay } from "@chakra-ui/react";
 import { Link as ReachLink } from "react-router-dom";
 import { useAppState } from "../context/background/AppState";
-import CurrencyFormat from "react-currency-format";
 import CurrencyFormatter from "./shared/CurrencyFormatter";
 import { ArrowUpIcon } from "@chakra-ui/icons";
 
