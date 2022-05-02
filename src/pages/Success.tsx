@@ -6,10 +6,13 @@ import {
   VStack,
   Text,
   Link,
+  Button,
 } from "@chakra-ui/react";
-import LinkButton from "../components/shared/LinkButton";
+import { useNavigate } from "react-router-dom";
 
 export default function Success() {
+  let navigate = useNavigate();
+
   return (
     <VStack alignItems="left" height="100%">
       <Center h="100%">
@@ -31,7 +34,7 @@ export default function Success() {
             </Text>
           </Box>
           <Box>
-            <Link color="blue.400" href="#">
+            <Link color="blue.400" href="https://etherscan.io/" isExternal>
               View on Ethercan {"->"}
             </Link>
           </Box>
@@ -39,7 +42,14 @@ export default function Success() {
       </Center>
 
       <Box w="100%">
-        <LinkButton text="Done" to="/" />
+        <Button
+          colorScheme="black"
+          variant="outline"
+          width="100%"
+          onClick={() => navigate("/")}
+        >
+          Done
+        </Button>
       </Box>
     </VStack>
   );

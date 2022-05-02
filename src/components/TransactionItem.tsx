@@ -42,7 +42,7 @@ export default function TransactionItem({
               suffix={"ETH"}
               decimalScale={1}
               thousandSeparator={true}
-              prefix={""}
+              prefix={"-"}
             />
           </Text>
           <Text fontSize="xs" color="gray.400" align="right">
@@ -51,7 +51,7 @@ export default function TransactionItem({
               suffix={"USD"}
               decimalScale={1}
               thousandSeparator={true}
-              prefix={""}
+              prefix={"-"}
             />
           </Text>
         </VStack>
