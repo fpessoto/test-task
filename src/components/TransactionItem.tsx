@@ -1,7 +1,8 @@
 import { Avatar, Box, HStack, Text, VStack } from "@chakra-ui/react";
+import Moment from "react-moment";
+import CurrencyFormatter from "./shared/CurrencyFormatter";
 
 interface PropTypes {
-  // title: string;
   date: Date;
   ethValue: number;
   usdValue: number;
@@ -12,10 +13,6 @@ export default function TransactionItem({
   ethValue,
   usdValue,
 }: PropTypes) {
-  // const { transaction } = props;
-
-  // const ethPrice = defaults.ethPrice;
-
   return (
     <HStack spacing="24px" width="100%" h="60px">
       <Box w="80px" h="100%" alignItems="center">
@@ -33,17 +30,29 @@ export default function TransactionItem({
         <VStack>
           <Text color="black">Sent Ether</Text>
           <Text fontSize="xs" color="gray.400">
-            {date.toString()}
+            <Moment format="DD-MM-YYYY HH:mm">{date.toString()}</Moment>
           </Text>
         </VStack>
       </Box>
       <Box w="120px" h="100%">
         <VStack>
           <Text as="b" align="right" color="black">
-            {ethValue} ETH
+            <CurrencyFormatter
+              value={ethValue}
+              suffix={"ETH"}
+              decimalScale={1}
+              thousandSeparator={true}
+              prefix={""}
+            />
           </Text>
           <Text fontSize="xs" color="gray.400" align="right">
-            {usdValue} USD
+            <CurrencyFormatter
+              value={usdValue}
+              suffix={"USD"}
+              decimalScale={1}
+              thousandSeparator={true}
+              prefix={""}
+            />
           </Text>
         </VStack>
       </Box>

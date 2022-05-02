@@ -12,7 +12,7 @@ export default function Account() {
           borderRadius="full"
           boxSize="32px"
           src="/apple-touch-icon.png"
-          alt="Dan Abramov"
+          alt="Avatar"
         />
       </Center>
 
@@ -21,7 +21,11 @@ export default function Account() {
           {account.name}
         </Text>
         <Text fontSize="xs" color="gray.400">
-          {account.publicAddress}
+          {`${account.publicAddress.substring(0, 5)}...
+          ${account.publicAddress.substring(
+            account.publicAddress.length - 3,
+            account.publicAddress.length
+          )}`}
         </Text>
       </Box>
     </Flex>
