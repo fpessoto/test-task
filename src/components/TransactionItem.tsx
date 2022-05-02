@@ -1,19 +1,20 @@
-import defaults from "../utils/constants";
+import { Avatar, Box, HStack, Text, VStack } from "@chakra-ui/react";
 
-import {
-  Avatar,
-  Box,
-  Center,
-  HStack,
-  Image,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+interface PropTypes {
+  // title: string;
+  date: Date;
+  ethValue: number;
+  usdValue: number;
+}
 
-export default function TransactionItem(props: any) {
-  const { transaction } = props;
+export default function TransactionItem({
+  date,
+  ethValue,
+  usdValue,
+}: PropTypes) {
+  // const { transaction } = props;
 
-  const ethPrice = defaults.ethPrice;
+  // const ethPrice = defaults.ethPrice;
 
   return (
     <HStack spacing="24px" width="100%" h="60px">
@@ -32,17 +33,17 @@ export default function TransactionItem(props: any) {
         <VStack>
           <Text color="black">Sent Ether</Text>
           <Text fontSize="xs" color="gray.400">
-            {transaction.date}
+            {date.toString()}
           </Text>
         </VStack>
       </Box>
       <Box w="120px" h="100%">
         <VStack>
           <Text as="b" align="right" color="black">
-            {transaction.amount} ETH
+            {ethValue} ETH
           </Text>
           <Text fontSize="xs" color="gray.400" align="right">
-            {ethPrice} USD
+            {usdValue} USD
           </Text>
         </VStack>
       </Box>

@@ -1,19 +1,37 @@
 import { StackDivider, VStack } from "@chakra-ui/react";
-import defaults from "../utils/constants";
+import { Transaction } from "../services/TransactionsService";
 import TransactionItem from "./TransactionItem";
 
-export default function TransactionHistory() {
-  const transactions = defaults.pastTransactions;
+interface PropTypes {
+  transactions: Array<Transaction>;
+  ethPrice: number;
+  publicAddress: string;
+}
 
+export default function TransactionHistory({
+  transactions,
+  publicAddress,
+  ethPrice,
+}: PropTypes) {
   return (
     <VStack
       divider={<StackDivider borderColor="gray.200" />}
       spacing={4}
       align="stretch"
     >
-      {transactions.map((transaction, index) => {
-        return <TransactionItem transaction={transaction} key={index} />;
-      })}
+      {transactions
+        .sort((a, b) => b.id - a.id)
+        .map((transaction, index) => {
+          const usdValue = ethPrice * transaction.value;
+          return (
+            <TransactionItem
+              ethValue={transaction.value}
+              date={transaction.date}
+              usdValue={usdValue}
+              key={index}
+            />
+          );
+        })}
     </VStack>
   );
 }

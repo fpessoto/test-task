@@ -1,10 +1,9 @@
 import { Text, Image, Box, Flex, Center } from "@chakra-ui/react";
+import { useAppState } from "../context/background/AppState";
 
 export default function Account() {
-  const account = {
-    name: "Account1",
-    address: "124214124211421",
-  };
+  const { state } = useAppState();
+  const { account } = state;
 
   return (
     <Flex w="100%">
@@ -22,7 +21,7 @@ export default function Account() {
           {account.name}
         </Text>
         <Text fontSize="xs" color="gray.400">
-          {account.address}
+          {account.publicAddress}
         </Text>
       </Box>
     </Flex>

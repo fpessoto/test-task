@@ -8,8 +8,14 @@ import Transfer from "./pages/Transfer";
 const App = () => {
   return (
     <AppState>
-      <Container bg="gray.50" p="10">
-        <Container boxShadow="md" p="6" rounded="sm" bg="white" height="550px">
+      <Container bg="gray.50" p="5" w="450px">
+        <Container
+          boxShadow="md"
+          p="6"
+          rounded="sm"
+          bg="white"
+          minHeight="550px"
+        >
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="transfer" element={<Transfer />} />

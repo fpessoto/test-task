@@ -9,6 +9,7 @@ export interface Transaction {
   to: string;
   from: string;
   value: number;
+  date: Date;
 }
 
 export interface TransactionsServiceState {
@@ -34,6 +35,11 @@ export class TransactionsService extends BaseService<TransactionsServiceState> {
    */
   public async addTransaction(newTransaction: Transaction): Promise<void> {
     return new Promise<void>((resolve) => {
+      const state = this.getState();
+      this.updateState({
+        transactions: [...state.transactions, newTransaction],
+      });
+
       setTimeout(() => {
         resolve();
       }, 300);

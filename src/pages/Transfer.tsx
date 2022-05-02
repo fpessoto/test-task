@@ -1,3 +1,4 @@
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -13,13 +14,31 @@ import {
 } from "@chakra-ui/react";
 import LinkButton from "../components/shared/LinkButton";
 
+import AppContext from "../context/background/AppContext";
+
 export default function Transfer() {
+  const { state, addTransaction } = useContext(AppContext);
+
+  const [amount, setAmount] = React.useState("");
+  const handleAmount = (event: any) => setAmount(event.target.value);
+
+  const [recipent, setRecipent] = React.useState("");
+  const handleRecipent = (event: any) => setRecipent(event.target.value);
+
   let navigate = useNavigate();
 
-  const submitHandler = (event: any) => {
-    console.log("test");
-    event.preventDefault();
-    navigate(`/success`);
+  const submitHandler = async () => {
+    const transaction = {
+      id: state.transactions.length + 1,
+      from: state.account.publicAddress,
+      to: recipent,
+      value: Number(amount),
+      date: new Date(),
+    };
+
+    console.log({ transaction });
+    addTransaction(transaction);
+    navigate("/");
   };
 
   return (
@@ -39,6 +58,7 @@ export default function Transfer() {
                 id="recipient"
                 type="text"
                 placeholder="Enter public Address."
+                onChange={handleRecipent}
               />
             </FormControl>
 
@@ -48,6 +68,7 @@ export default function Transfer() {
                 id="amount"
                 type="text"
                 placeholder="Enter the amount will be transfered."
+                onChange={handleAmount}
               />
             </FormControl>
           </form>
